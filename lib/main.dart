@@ -1,10 +1,21 @@
-import 'package:finpronih/UI/Home/catalogue_screen.dart';
 import 'package:finpronih/UI/Home/components/nav_bar.dart';
+import 'package:finpronih/state-manegement/theme_provider';
+import 'package:finpronih/state-manegement/wishlist_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => WishlistProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,30 +23,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+              brightness: themeProvider.isDarkTheme ? Brightness.dark : Brightness.light,
+              scaffoldBackgroundColor: themeProvider.isDarkTheme ? Colors.black : Colors.white,
+              fontFamily: 'Muli',
+              // biar density atau kepadetan mobile app nya, buat adaptive di semua devices
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              textTheme: TextTheme(
+                bodyMedium: TextStyle(color: themeProvider.isDarkTheme ? Colors.white : Colors.black),
+                bodySmall: TextStyle(color: themeProvider.isDarkTheme ? Colors.white : Colors.black),
+              )
+            ),
+        debugShowCheckedModeBanner: false,
+        home: const HomeScreen(),
+      );
+      }
     );
   }
 }
