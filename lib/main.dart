@@ -1,3 +1,5 @@
+import 'package:finpronih/UI/Home/catalogue_screen.dart';
+import 'package:finpronih/UI/Home/components/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -31,7 +34,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: const HomeScreen(),
     );
   }
 }
