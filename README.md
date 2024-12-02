@@ -1,6 +1,22 @@
-# finpronih
 
-A new Flutter project.
+# Home Walk
+
+
+This app is a recipe platform we created to explore various food recipes with super useful features 🍽️💗. It lets users manage their favorite recipes 📝🔥, create a to-do list for shopping ingredients 🛒🤩, and access up-to-date recipes from an external API 🌐🚀.
+
+
+## Features
+
+- Users can manage their to-do list ingredients 🤩.
+- Access up-to-date recipes from an API 🚀
+- Light/dark mode toggle 💿
+- Lets user manage their favorite recipe 🤤 🌮
+- The app features a custom-designed navbar using dependencies😎🤟🏻, offering a more personalized look compared to the default Flutter navbar 🔥 🤯
+
+
+
+## Dependencies
+
 
 ## Getting Started
 
