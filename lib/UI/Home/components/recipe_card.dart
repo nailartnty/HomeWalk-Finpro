@@ -50,12 +50,12 @@ class _RecipeCardState extends State<RecipeCard> {
               padding: const EdgeInsets.symmetric(horizontal:  8.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => DetailScreen(recipe: recipes)
-                    )
-                  );
+                  // Navigator.push(
+                  //   context, 
+                  //   MaterialPageRoute(
+                  //     builder: (context) => 
+                  //   )
+                  // );
                 },
                 child: Container(
                     decoration: BoxDecoration(

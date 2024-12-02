@@ -1,196 +1,103 @@
-import 'package:finpronih/models/recipes_model.dart';
+import 'package:finpronih/UI/detail/components/calories_time_asset.dart';
+import 'package:finpronih/UI/detail/components/description_asset.dart';
+import 'package:finpronih/UI/detail/components/image_detail.dart';
+import 'package:finpronih/UI/detail/components/tab_bar_asset.dart';
+import 'package:finpronih/UI/detail/components/title_asset.dart';
+import 'package:finpronih/const.dart';
 import 'package:flutter/material.dart';
 
-// detailscreen adalah widget statelesswidget karena ui tidak berubah setelah dibuat
 class DetailScreen extends StatelessWidget {
-  // recipe adalah data yang diterima dari layar sebelumnya
-  final Recipe recipe;
-
-  // konstruktor dengan key dan parameter recipe yang wajib diisi
-  const DetailScreen({super.key, required this.recipe});
+  const DetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size; // ukuran layar untuk penyesuaian ui
+    final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // menampilkan gambar dengan ukuran penuh di bagian atas
-            Image.network(
-              recipe.image,
-              fit: BoxFit.cover,
-              height: 450,
-              width: size.width,
-            ),
-            // tombol untuk kembali ke layar sebelumnya
-            Padding(
-              padding: MediaQuery.of(context).padding,
-              child: Positioned(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context); // tidak memerlukan perubahan state
-                  },
-                  child: const Icon(Icons.arrow_back_ios),
+      body: Stack( //biar bisa numpuk2 an
+        children: [
+          // Gambar header
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: ImageDetail(), //nanti masuk buat liat gambar
+          ),
+
+          // App Bar
+          Positioned( // berguna biar dia gak mojok banget
+            top: 10,
+            left: 20,
+            right: 20,
+
+            // App bar nya di mulai dari sini
+            child: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: GestureDetector( //pake ini karena karna kita full pake widget bukan button
+                onTap: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(3.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 5,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.close,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ),
             ),
-            // informasi utama tentang resep (nama, tipe makanan, dll.)
-            Positioned(
-              bottom: -50,
-              right: 30,
-              left: 30,
-              child: Container(
-                height: 140,
-                width: size.width,
-                decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 2,
-                      blurRadius: 2,
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.amber,
+          ),
+          // End App bar
+
+          // Card detail start
+          Positioned(
+            top: size.height * 0.3, // Mulai card di bawah gambar biar gak nutup gambar
+            left: 0,
+            right: 0,
+
+            // ini cardnya di setting2
+            child: Container(
+              height: size.height * 0.7, // Sisa tinggi layar
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
                 ),
+              ),
+
+              // ini isi konten dari cardnya
+              child: const SingleChildScrollView( //pake ini biar isi cardnya aja yg di scroll
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            recipe.name,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                recipe.mealType[0],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const Text(
-                                " & ",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                recipe.cuisine,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      width: size.width,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 35),
-                          const Icon(Icons.star, color: Colors.orange),
-                          Text(recipe.rating.toString()),
-                          const SizedBox(width: 50),
-                          const Icon(Icons.timer, color: Colors.blueAccent),
-                          Text(recipe.cookTimeMinutes.toString()),
-                          const SizedBox(width: 50),
-                          const Icon(Icons.accessibility,
-                              color: Colors.black),
-                          Text(
-                              "${recipe.caloriesPerServing.toString()} kcl"),
-                        ],
-                      ),
-                    ),
+                    SizedBox(height: 20),
+                    TitleAsset(),
+                    SizedBox(height: defaultPadding),
+                    DescriptionAsset(),
+                    SizedBox(height: defaultPadding),
+                    CaloriesTimeAsset(),
+                    SizedBox(height: defaultPadding),
+                    TabBarAsset(),
                   ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 60),
-                  const Text(
-                    "ingredients",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 10),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:
-                            List.generate(recipe.ingredients.length, (index) {
-                          return Text(
-                            "- ${recipe.ingredients[index]}",
-                            style: const TextStyle(
-                              fontSize: 18,
-                            ),
-                          );
-                        })),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "instructions",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(
-                        recipe.instructions.length,
-                        (index) {
-                          return Text(
-                            "- ${recipe.instructions[index]}",
-                            style: const TextStyle(
-                              fontSize: 18,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 40),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
