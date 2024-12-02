@@ -47,15 +47,15 @@ class _RecipeCardState extends State<RecipeCard> {
           final recipes = recipesModel[index];
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal:  8.0),
+              padding: EdgeInsets.symmetric(horizontal:  8.0),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context, 
-                  //   MaterialPageRoute(
-                  //     builder: (context) => 
-                  //   )
-                  // );
+                  Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (context) => DetailScreen(recipe: recipes)
+                    )
+                  );
                 },
                 child: Container(
                     decoration: BoxDecoration(

@@ -89,7 +89,7 @@ class SignUpForm extends StatelessWidget {
                 // Button Login
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.pushReplacementNamed(context, '/onboarding');
+                    Navigator.pushReplacementNamed(context, '/home');
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -108,7 +108,7 @@ class SignUpForm extends StatelessWidget {
               // const Expanded(child: ),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
+                  Navigator.pushNamed(context, '/signin');
                 }, 
                 child: const Text(
                   'Don’t have Account? Sign up now',

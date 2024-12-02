@@ -1,8 +1,10 @@
 import 'package:finpronih/const.dart';
+import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
 class TitleAsset extends StatelessWidget {
-  const TitleAsset({super.key});
+  const TitleAsset({super.key, required this.recipe});
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +13,8 @@ class TitleAsset extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text( //ini buat judul text
-            "Healthy Taco Salad",
+          Text( //ini buat judul text
+            recipe.name,
             style: TextStyle(
               color: Colors.black,
               fontSize: 24,

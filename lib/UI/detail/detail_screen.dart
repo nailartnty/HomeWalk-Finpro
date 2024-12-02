@@ -1,27 +1,38 @@
 import 'package:finpronih/UI/detail/components/calories_time_asset.dart';
 import 'package:finpronih/UI/detail/components/description_asset.dart';
-import 'package:finpronih/UI/detail/components/image_detail.dart';
 import 'package:finpronih/UI/detail/components/tab_bar_asset.dart';
 import 'package:finpronih/UI/detail/components/title_asset.dart';
 import 'package:finpronih/const.dart';
+import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  const DetailScreen({super.key, required this.recipe});
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    
 
     return Scaffold(
       body: Stack( //biar bisa numpuk2 an
         children: [
           // Gambar header
-          const Positioned(
+          Positioned(
             top: 0,
             left: 0,
             right: 0,
-            child: ImageDetail(), //nanti masuk buat liat gambar
+            child: Container(
+              width: double.infinity,
+              height: 400,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(recipe.image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),//nanti masuk buat liat gambar
           ),
 
           // App Bar
@@ -79,19 +90,19 @@ class DetailScreen extends StatelessWidget {
               ),
 
               // ini isi konten dari cardnya
-              child: const SingleChildScrollView( //pake ini biar isi cardnya aja yg di scroll
+              child: SingleChildScrollView( //pake ini biar isi cardnya aja yg di scroll
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 20),
-                    TitleAsset(),
+                    TitleAsset(recipe: recipe),
                     SizedBox(height: defaultPadding),
                     DescriptionAsset(),
                     SizedBox(height: defaultPadding),
-                    CaloriesTimeAsset(),
+                    CaloriesTimeAsset(recipe: recipe,),
                     SizedBox(height: defaultPadding),
-                    TabBarAsset(),
+                    TabBarAsset(recipe: recipe,),
                   ],
                 ),
               ),

@@ -15,7 +15,7 @@ class OnboardingScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/image/background_onboarding.png'), // Tambahkan gambar background
+                image: AssetImage('assets/images/background_onboarding.png'), // Tambahkan gambar background
                 fit: BoxFit.cover, // Mengisi seluruh layar
               ),
             ),

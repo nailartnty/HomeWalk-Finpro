@@ -10,7 +10,8 @@ class ButtonOnboarding extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {Navigator.pushNamed(context, "/signin");
+          },
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.infinity, 50),
             backgroundColor: secondaryColor, // Warna hitam kebiruan
@@ -29,9 +30,12 @@ class ButtonOnboarding extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10), // Jarak antara tombol
+
         // Tombol Sign Up
         OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, "signup");
+          },
           style: OutlinedButton.styleFrom(
             minimumSize: const Size(double.infinity,50),
             side: const BorderSide(

@@ -20,7 +20,7 @@ class SosialMedia extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Image(
-              image: AssetImage('assets/image/Google.png'),
+              image: AssetImage('assets/images/Google.png'),
               height: 16,
               width: 16,
             ),
@@ -39,7 +39,7 @@ class SosialMedia extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Image(
-              image: AssetImage('assets/image/Gmail.png'),
+              image: AssetImage('assets/images/Gmail.png'),
               height: 16,
               width: 16,
             ),
@@ -58,7 +58,7 @@ class SosialMedia extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Image(
-              image: AssetImage('assets/image/Facebook.png'),
+              image: AssetImage('assets/images/Facebook.png'),
               height: 16,
               width: 16,
             ),

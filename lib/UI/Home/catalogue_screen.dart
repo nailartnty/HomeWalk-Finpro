@@ -86,8 +86,6 @@ class CatalogueScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 RecipeCard()
-                
-        
               ]
             
           )

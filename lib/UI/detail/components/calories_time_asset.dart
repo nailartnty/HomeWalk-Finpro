@@ -1,7 +1,9 @@
+import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
 class CaloriesTimeAsset extends StatelessWidget {
-  const CaloriesTimeAsset({super.key});
+  const CaloriesTimeAsset({super.key, required this.recipe});
+  final Recipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,8 @@ class CaloriesTimeAsset extends StatelessWidget {
                 child: const Icon(Icons.whatshot),
               ),
               const SizedBox(width: 10,),
-              const Text(
-                "2000 KCAL",
+              Text(
+                "${recipe.caloriesPerServing} KCAL"
                 )
             ],
           ),
@@ -41,8 +43,8 @@ class CaloriesTimeAsset extends StatelessWidget {
                 child: const Icon(Icons.access_time),
               ),
               const SizedBox(width: 10,),
-              const Text(
-                "15 Minutes",
+              Text(
+                "${recipe.cookTimeMinutes} Minutes",
                 )
             ],
           )

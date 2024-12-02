@@ -74,7 +74,7 @@ class SignForm extends StatelessWidget {
                   if (_formKey.currentState!.validate()) { // _formKey untuk mengontrol form 
                   //  Memberikan akses ke instance FormState yang terkait dengan form 
                   //// ! untuk menandakan bahwa currentState tidak boleh null
-                    Navigator.pushReplacementNamed(context, '/onboarding');
+                    Navigator.pushReplacementNamed(context, '/home');
                   }
                 },
                 style: ElevatedButton.styleFrom(
