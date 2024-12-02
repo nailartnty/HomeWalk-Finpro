@@ -46,7 +46,9 @@ class DetailScreen extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: GestureDetector( //pake ini karena karna kita full pake widget bukan button
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, "/home");
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Container(

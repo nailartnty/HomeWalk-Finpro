@@ -1,3 +1,4 @@
+import 'package:finpronih/const.dart';
 import 'package:flutter/material.dart';
 import 'package:finpronih/models/recipes_model.dart';
 
@@ -25,7 +26,7 @@ class Ingredient extends StatelessWidget {
               ),
               Icon(
                 Icons.book,
-                color: Colors.blue,
+                color: primaryColor,
               ),
             ],
           ),
@@ -79,9 +80,9 @@ class Ingredient extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "Jumlah sesuai kebutuhan (${index + 1} dari ${recipe.ingredients.length})", // Jumlah bahan dengan informasi index
+                              "as you need", // Jumlah bahan dengan informasi index
                               style: const TextStyle(
-                                color: Colors.blue,
+                                color: primaryColor,
                               ),
                             ),
                           ],

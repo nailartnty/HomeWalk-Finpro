@@ -11,6 +11,13 @@ class OnboardingScreen extends StatelessWidget {
       backgroundColor: primaryColor,
       body: Stack(
         children: [
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 40
+            ),
+          ),
           // Background Image
           Container(
             decoration: const BoxDecoration(
@@ -28,6 +35,7 @@ class OnboardingScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(height: 30),
                   // Teks utama
                   Text(
                     "Food for Everyone",

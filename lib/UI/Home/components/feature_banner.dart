@@ -18,9 +18,8 @@ class _FeatureBannerState extends State<FeatureBanner> {
 
   // ini list berisi link gambar yang bakal dipake di banner
   final List<String> _images = [
-    'https://via.placeholder.com/400x200/FF5733/FFFFFF?text=Banner+1',
-    'https://via.placeholder.com/400x200/33FF57/FFFFFF?text=Banner+2',
-    'https://via.placeholder.com/400x200/3357FF/FFFFFF?text=Banner+3',
+    "assets/images/Banner_1.png",
+    "assets/images/Banner_2.png",
   ];
 
   @override
@@ -62,9 +61,12 @@ class _FeatureBannerState extends State<FeatureBanner> {
         itemCount: _images.length,
         // itemBuilder ini dipanggil buat bikin widget gambar
         itemBuilder: (context, index) {
-          return Image.network(
-            _images[index], // ambil gambar dari url
-            fit: BoxFit.cover, // bikin gambar nge-cover seluruh area
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              _images[index],
+              fit: BoxFit.cover, // bikin gambar nge-cover seluruh area
+            ),
           );
         },
       ),

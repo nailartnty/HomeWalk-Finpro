@@ -1,3 +1,4 @@
+import 'package:finpronih/const.dart';
 import 'package:finpronih/state-manegement/theme_provider';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -89,21 +90,21 @@ class _CategoriesState extends State<Categories> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          
           children: [
             Container(
               padding:  EdgeInsets.all(10), // Mengurangi padding agar lebih kecil
               decoration: BoxDecoration(
                 color:  themeProvider.isDarkTheme
-                ? (selectedIndex == index ? Colors.blue.shade50 : const Color(0xFF303030))
-                : (selectedIndex == index ? Colors.indigo.withOpacity(0.1) : Colors.white),
+                ? (selectedIndex == index ? const Color.fromARGB(33, 112, 185, 190) : const Color(0xFF303030))
+                : (selectedIndex == index ? const Color.fromARGB(33, 112, 185, 190) : Colors.white),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 categories[index]["icon"],
                 color: themeProvider.isDarkTheme
-                    ? (selectedIndex == index ? Colors.indigo.shade400 : Colors.indigo.shade200)
-                    : (selectedIndex == index ? Colors.indigo : Colors.indigo.shade200),                size: 20,
+                    ? (selectedIndex == index ? primaryColor : primaryLightColor)
+                    : (selectedIndex == index ? primaryColor : primaryLightColor),                size: 20,
               ),
             ),
             const SizedBox(height: 7),
@@ -111,8 +112,8 @@ class _CategoriesState extends State<Categories> {
               categories[index]["text"],
               style: TextStyle(
                 color: themeProvider.isDarkTheme
-                    ? (selectedIndex == index ? Colors.indigo.shade400 : Colors.indigo.shade200)
-                    : (selectedIndex == index ? Colors.indigo : Colors.indigo.shade200),                 fontWeight: selectedIndex == index ? FontWeight.bold : FontWeight.normal,
+                    ? (selectedIndex == index ? primaryColor : primaryLightColor)
+                    : (selectedIndex == index ? primaryColor : primaryLightColor),                 fontWeight: selectedIndex == index ? FontWeight.bold : FontWeight.normal,
                 fontSize: 12
               ),
             ),

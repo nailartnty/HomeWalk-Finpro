@@ -10,7 +10,8 @@ class ButtonOnboarding extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {Navigator.pushNamed(context, "/signin");
+          onPressed: () {
+            Navigator.pushNamed(context, '/signin');
           },
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.infinity, 50),
@@ -34,7 +35,8 @@ class ButtonOnboarding extends StatelessWidget {
         // Tombol Sign Up
         OutlinedButton(
           onPressed: () {
-            Navigator.pushNamed(context, "signup");
+
+            Navigator.pushNamed(context, '/signup');
           },
           style: OutlinedButton.styleFrom(
             minimumSize: const Size(double.infinity,50),

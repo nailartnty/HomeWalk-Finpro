@@ -1,3 +1,4 @@
+import 'package:finpronih/const.dart';
 import 'package:flutter/material.dart';
 
 // groceries todo adalah sebuah widget stateful
@@ -64,7 +65,7 @@ class _GroceriesTodoState extends State<GroceriesTodo> {
     return Scaffold(
       // appbar adalah bagian atas aplikasi yang menampilkan judul
       appBar: AppBar(
-        title: const Text('groceries todo list'),
+        title: const Text('groceries todo list',),
       ),
       // body adalah bagian utama aplikasi
       body: Padding(
@@ -77,7 +78,8 @@ class _GroceriesTodoState extends State<GroceriesTodo> {
               "Groceries list",
               style: TextStyle(
                 fontSize: 28,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.bold,
+                color: primaryColor,
               ),
               textAlign: TextAlign.left,
             ),

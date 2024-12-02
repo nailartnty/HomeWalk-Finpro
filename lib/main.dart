@@ -5,6 +5,7 @@ import 'package:finpronih/UI/Settings/settings_screen.dart';
 import 'package:finpronih/UI/Todolist/groceries_todo.dart';
 import 'package:finpronih/UI/Wishlist/wishlist_screen.dart';
 import 'package:finpronih/UI/onboarding/onboarding_screen.dart';
+import 'package:finpronih/UI/splashscreen/splash.dart';
 import 'package:finpronih/state-manegement/theme_provider';
 import 'package:finpronih/state-manegement/wishlist_provider.dart';
 import 'package:flutter/material.dart';
@@ -47,8 +48,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: {
-          "/" : (context) => OnboardingScreen(),
+          "/" : (context) => SplashScreen(),
           "/signin" : (context) => SigninScreen(),
+          "/onboarding" : (context) => OnboardingScreen(),
           "/signup" : (context) => SignupScreen(),
           "/home" : (context) => HomeScreen(),
           "/favorite" : (context) => WishlistScreen(),

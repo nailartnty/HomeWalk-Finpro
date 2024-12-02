@@ -1,4 +1,3 @@
-import 'package:finpronih/UI/Auth/components/sosial_media.dart';
 import 'package:finpronih/const.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +22,6 @@ class SignForm extends StatelessWidget {
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email Address',
-                    border: OutlineInputBorder()
                   ),
                   validator: (value) {
                     // Parameter value adalah nilai yang diinputkan oleh pengguna dalam TextFormField
@@ -40,11 +38,8 @@ class SignForm extends StatelessWidget {
                 TextFormField(
                   controller: _passwordController, // ini kita gunakan untuk mengontrol inputan password
                   obscureText: true, // biar dia  tidak kebaca passwordnya
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Password", // label untuk inputan password
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    ), // border untuk inputan password
                   ),
                   validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -67,14 +62,14 @@ class SignForm extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const Spacer(flex: 2), // menghitung/mengambil proporsi ruang berdasarkan nilai flex
               ElevatedButton(
                 // Button Login
                 onPressed: () {
                   if (_formKey.currentState!.validate()) { // _formKey untuk mengontrol form 
                   //  Memberikan akses ke instance FormState yang terkait dengan form 
                   //// ! untuk menandakan bahwa currentState tidak boleh null
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushNamed(context, '/home');
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -90,20 +85,6 @@ class SignForm extends StatelessWidget {
                   ),
                 ),
               ),
-              const Expanded(child: SosialMedia()),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
-                }, 
-                child: const Text(
-                  'Don’t have Account? Sign up now',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: secondaryColor
-                  ),
-                )
-              )
             ]
           )
         )

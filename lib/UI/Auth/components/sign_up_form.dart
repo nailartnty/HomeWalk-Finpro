@@ -18,29 +18,36 @@ class SignUpForm extends StatelessWidget {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch, // 
               children: [ 
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(
                     labelText: 'User Name',
-                    border: OutlineInputBorder()
                   ),
                   validator: (value) {
-                    // Parameter value adalah nilai yang diinputkan oleh pengguna dalam TextFormField
-                    if (value == null || value.isEmpty) { // Mengecek apakah input kosong atau null. Jika iya, fungsi akan mengembalikan pesan error 'Please enter your email', yang akan ditampilkan di bawah input.
-                      return 'Email is Required';
-                    } // ! -> menandakan bahwa kondisi ini negatif
-                    if (!value.endsWith('@gmail.com')) { // harus validasi @gmail.com (dibelakangnya harus ada)
-                      return 'please fill with valid email';
+                    // Mengecek apakah input kosong
+                    if (value == null || value.isEmpty) {
+                      return 'User Name is required';
                     }
-                    return null; // Jika input tidak kosong, validator mengembalikan nilainya, yang berarti input valid
+
+                    final validCharacters = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$');
+                    // ^: diawali dari string
+                    // (?=.*[a-z]): Harus mengandung setidaknya satu huruf kecil
+                    //(?=.*[A-Z]) : Harus mengandung setidaknya satu huruf besar
+                    // (?=.*\d): Harus mengandung setidaknya satu angka.
+                    // +$: diakhiri dengan string
+                    if (!validCharacters.hasMatch(value)) {
+                      return 'Must include uppercase, lowercase, and a number';
+                    }
+                    return null; // Input valid
                   },
                 ),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email Address',
-                    border: OutlineInputBorder()
                   ),
                   validator: (value) {
                     // Parameter value adalah nilai yang diinputkan oleh pengguna dalam TextFormField
@@ -50,18 +57,24 @@ class SignUpForm extends StatelessWidget {
                     if (!value.endsWith('@gmail.com')) { // harus validasi @gmail.com (dibelakangnya harus ada)
                       return 'please fill with valid email';
                     }
+                    final validCharacters = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$');
+                    // ^: diawali dari string
+                    // (?=.*[a-z]): Harus mengandung setidaknya satu huruf kecil
+                    //(?=.*[A-Z]) : Harus mengandung setidaknya satu huruf besar
+                    // (?=.*\d): Harus mengandung setidaknya satu angka.
+                    // +$: diakhiri dengan string
+                    if (!validCharacters.hasMatch(value)) {
+                      return 'Must include uppercase, lowercase, and a number';
+                    }
                     return null; // Jika input tidak kosong, validator mengembalikan nilainya, yang berarti input valid
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _passwordController, // ini kita gunakan untuk mengontrol inputan password
                   obscureText: true, // biar dia  tidak kebaca passwordnya
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Password", // label untuk inputan password
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    ), // border untuk inputan password
                   ),
                   validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -84,12 +97,12 @@ class SignUpForm extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
+              const Spacer(flex: 2),
               ElevatedButton(
                 // Button Login
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushNamed(context, '/home');
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -97,27 +110,13 @@ class SignUpForm extends StatelessWidget {
                   backgroundColor: secondaryColor
                 ),
                 child: const Text(
-                  "Log In",
+                  "Sign Up",
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
                     fontWeight: FontWeight.w700
                   ),
                 ),
-              ),
-              // const Expanded(child: ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/signin');
-                }, 
-                child: const Text(
-                  'Don’t have Account? Sign up now',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: secondaryColor
-                  ),
-                )
               ),
             ]
           )

@@ -1,3 +1,4 @@
+import 'package:finpronih/const.dart';
 import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +20,10 @@ class CaloriesTimeAsset extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: primaryLightColor,
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: const Icon(Icons.whatshot),
+                child: const Icon(Icons.whatshot, color: primaryColor,),
               ),
               const SizedBox(width: 10,),
               Text(
@@ -37,10 +38,10 @@ class CaloriesTimeAsset extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: primaryLightColor,
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: const Icon(Icons.access_time),
+                child: const Icon(Icons.access_time, color: primaryColor,),
               ),
               const SizedBox(width: 10,),
               Text(

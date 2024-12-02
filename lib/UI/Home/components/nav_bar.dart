@@ -3,6 +3,8 @@ import 'package:finpronih/UI/Home/catalogue_screen.dart';
 import 'package:finpronih/UI/Settings/settings_screen.dart';
 import 'package:finpronih/UI/Todolist/groceries_todo.dart';
 import 'package:finpronih/UI/Wishlist/wishlist_screen.dart';
+import 'package:finpronih/UI/profile/profile_screen.dart';
+import 'package:finpronih/const.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const WishlistScreen(), 
     const GroceriesTodo(), 
     const SettingsScreen(),
-    const CatalogueScreen(), 
+    const ProfileScreen(), 
   ];
 
   @override
@@ -34,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _pages[_selectedIndex], // bagian body menampilkan halaman sesuai index yang dipilih
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent, // warna background layar
-        color: Colors.indigo, // warna dari navbar
+        color: primaryColor, // warna dari navbar
         animationDuration: const Duration(milliseconds: 500), // animasi transisi antar item di navbar
         items: const [
           Icon(Icons.home, color: Colors.white), // icon untuk QR Scanner

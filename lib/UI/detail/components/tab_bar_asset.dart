@@ -1,6 +1,7 @@
 import 'package:animated_segmented_tab_control/animated_segmented_tab_control.dart';
 import 'package:finpronih/UI/detail/components/ingredient.dart';
 import 'package:finpronih/UI/detail/components/instruction.dart';
+import 'package:finpronih/const.dart';
 import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,7 @@ class _TabBarAssetState extends State<TabBarAsset> {
               SegmentTab(
                 label: "Instruction",
                 textColor: Colors.black,
-                color: Colors.purple,
+                color: primaryColor,
               ),
             ],
           ),
@@ -50,11 +51,11 @@ class _TabBarAssetState extends State<TabBarAsset> {
               children: [
                 SingleChildScrollView( //biar si sectionnya bisa di scroll
                   padding: EdgeInsets.all(8.0),
-                  child: Ingredient(recipe: r),
+                  child: Ingredient(recipe: widget.recipe),
                 ),
                 SingleChildScrollView(
                   padding: EdgeInsets.all(8.0),
-                  child: Instruction(),
+                  child: Instruction(recipe: widget.recipe,),
                 ),
               ],
             ),

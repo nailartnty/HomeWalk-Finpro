@@ -11,12 +11,23 @@ class WishlistScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Wishlist'),
+        title: const Text('My Favorite'),
       ),
       body: wishlistProvider.wishlistItems.isEmpty
           ? const Center(
-              child: Text('Your wishlist is empty!'),
-            )
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.heart_broken_sharp,
+            color: Color.fromARGB(255, 167, 167, 167),
+            size: 100),
+            Text("Nothing favorite",
+            style: TextStyle(
+              fontSize: 20
+            ),),
+          ],
+        ),
+      )
           : ListView.builder(
               itemCount: wishlistProvider.wishlistItems.length,
               itemBuilder: (context, index) {
