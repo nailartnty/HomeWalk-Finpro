@@ -31,15 +31,21 @@ https://www.figma.com/community/file/1160186880726418317
 
 ## 🔗 Links
 [![nama](https://img.shields.io/badge/Chika_Maharani-6f00ff?style=for-the-badge&logo=heart&logoColor=white)](https://katherineoelsner.com/)
+
 [![github](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ranchiika)
+
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chikamaharani/)
 
 [![nama](https://img.shields.io/badge/Aurell_Ghania-ff1493?style=for-the-badge&logo=heart&logoColor=white)](https://katherineoelsner.com/)
+
 [![github](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AurellGhania)
+
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aurellghania/)
 
 [![nama](https://img.shields.io/badge/Naila_Artanty-00ccff?style=for-the-badge&logo=heart&logoColor=white)](https://katherineoelsner.com/)
+
 [![github](https://img.shields.io/badge/github-000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nailartnty)
+
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/naila-artanty/)
 
 
