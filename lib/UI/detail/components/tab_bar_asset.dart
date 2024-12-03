@@ -3,7 +3,9 @@ import 'package:finpronih/UI/detail/components/ingredient.dart';
 import 'package:finpronih/UI/detail/components/instruction.dart';
 import 'package:finpronih/const.dart';
 import 'package:finpronih/models/recipes_model.dart';
+import 'package:finpronih/state-manegement/theme_provider';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TabBarAsset extends StatefulWidget {
   const TabBarAsset({super.key, required this.recipe});
@@ -16,6 +18,8 @@ class TabBarAsset extends StatefulWidget {
 class _TabBarAssetState extends State<TabBarAsset> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return DefaultTabController( //ini ngambil dari library
       length: 2,
       child: Column(
@@ -25,18 +29,24 @@ class _TabBarAssetState extends State<TabBarAsset> {
           SegmentedTabControl( //ini buat si segment atau bagian
             barDecoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey.shade300,
+              color: themeProvider.isDarkTheme
+                ? const Color(0xFF303030)
+                : Colors.grey.shade200,
             ),
             tabPadding: const EdgeInsets.all(5),
-            tabs: const [
+            tabs:  [
               SegmentTab( //nah segment nya kita setting disni sesuai yang kita mau, semakin banyak segment nya semakin banyak pilhannya
                 label: "Ingredient",
-                textColor: Colors.black,
-                color: Colors.blue,
+                textColor: themeProvider.isDarkTheme
+                ? Colors.white
+                : Colors.black,
+                color: primaryColor,
               ),
               SegmentTab(
                 label: "Instruction",
-                textColor: Colors.black,
+                textColor: themeProvider.isDarkTheme
+                ? Colors.white
+                : Colors.black,
                 color: primaryColor,
               ),
             ],

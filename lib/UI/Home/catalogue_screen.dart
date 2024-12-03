@@ -33,7 +33,7 @@ class CatalogueScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Chika Maharani',
+                    'Chika Ghania',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

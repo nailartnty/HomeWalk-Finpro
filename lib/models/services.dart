@@ -32,7 +32,7 @@ recipesItems() async {
 
       var data = recipesModelFromJson(res.body);
       // mengonversi body respons dari server ke dalam bentuk data
-      // fungsi recipesModelFromJson kemungkinan didefinisikan dalam file recipes_model.dart
+      // fungsi recipesModelFromJson  didefinisikan dalam file recipes_model.dart
       // data yang sudah diubah akan mempermudah pengolahan dalam aplikasi
 
       return data.recipes;
@@ -46,7 +46,7 @@ recipesItems() async {
 
   } catch (e) {
     // catch menangkap error yang terjadi pada blok try
-    // error bisa berupa kesalahan jaringan, kesalahan format data, dll.
+    // error bisa berupa kesalahan jaringan, kesalahan format data, dll
 
     print(e.toString());
     // mencetak error yang terjadi dalam bentuk string

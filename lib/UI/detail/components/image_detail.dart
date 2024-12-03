@@ -2,9 +2,9 @@ import 'package:finpronih/models/recipes_model.dart';
 import 'package:flutter/material.dart';
 
 class ImageDetail extends StatelessWidget {
-  // final Recipe recipe;
+  final Recipe recipe;
 
-  const ImageDetail({super.key,});
+  const ImageDetail({super.key, required this.recipe,});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,11 @@ class ImageDetail extends StatelessWidget {
       height: 400,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("images"),
+          image: NetworkImage(recipe.image), // Ubah ke NetworkImage
           fit: BoxFit.cover,
         ),
       ),
+
     );
   }
 }

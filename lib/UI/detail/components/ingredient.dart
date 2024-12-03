@@ -1,6 +1,8 @@
 import 'package:finpronih/const.dart';
+import 'package:finpronih/state-manegement/theme_provider';
 import 'package:flutter/material.dart';
 import 'package:finpronih/models/recipes_model.dart';
+import 'package:provider/provider.dart';
 
 class Ingredient extends StatelessWidget {
   const Ingredient({super.key, required this.recipe});
@@ -8,6 +10,8 @@ class Ingredient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
@@ -41,11 +45,16 @@ class Ingredient extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: themeProvider.isDarkTheme
+                        ? const Color(0xFF303030)
+                        : Colors.white,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: themeProvider.isDarkTheme
+                        ? Colors.white.withOpacity(0.5)
+                        : Colors.black.withOpacity(0.1),
+                        
                         blurRadius: 5,
                         spreadRadius: 1,
                       )
@@ -54,17 +63,7 @@ class Ingredient extends StatelessWidget {
                   child: Row(
                     children: [
                       // Image
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/dummy_photo.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        width: 80,
-                        height: 80,
-                      ),
+
                       const SizedBox(width: 10), // Jarak antar gambar dan teks
 
                       // Teks Ingredient
@@ -74,15 +73,20 @@ class Ingredient extends StatelessWidget {
                           children: [
                             Text(
                               "${index + 1}. ${recipe.ingredients[index]}", // Nama bahan dengan nomor urut
-                              style: const TextStyle(
+                              style:  TextStyle(
+                                color: themeProvider.isDarkTheme
+                                  ? Colors.white
+                                  : Colors.black,
                                 fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
                               "as you need", // Jumlah bahan dengan informasi index
-                              style: const TextStyle(
-                                color: primaryColor,
+                              style:  TextStyle(
+                                color: themeProvider.isDarkTheme
+                                ? const Color.fromARGB(255, 132, 215, 221)
+                                : primaryColor,
                               ),
                             ),
                           ],

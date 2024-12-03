@@ -1,10 +1,13 @@
 import 'package:finpronih/UI/detail/components/calories_time_asset.dart';
 import 'package:finpronih/UI/detail/components/description_asset.dart';
+import 'package:finpronih/UI/detail/components/image_detail.dart';
 import 'package:finpronih/UI/detail/components/tab_bar_asset.dart';
 import 'package:finpronih/UI/detail/components/title_asset.dart';
 import 'package:finpronih/const.dart';
 import 'package:finpronih/models/recipes_model.dart';
+import 'package:finpronih/state-manegement/theme_provider';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.recipe});
@@ -13,6 +16,8 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     
 
     return Scaffold(
@@ -23,16 +28,7 @@ class DetailScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: Container(
-              width: double.infinity,
-              height: 400,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(recipe.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),//nanti masuk buat liat gambar
+            child: ImageDetail(recipe: recipe),//nanti masuk buat liat gambar
           ),
 
           // App Bar
@@ -53,7 +49,9 @@ class DetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(3.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: themeProvider.isDarkTheme 
+                      ? primaryColor 
+                      : Colors.white,
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
@@ -63,9 +61,11 @@ class DetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const Icon(
+                    child:  Icon(
                       Icons.close,
-                      color: Colors.black,
+                      color: themeProvider.isDarkTheme 
+                      ? Colors.white 
+                      : Colors.black,
                     ),
                   ),
                 ),
@@ -83,9 +83,9 @@ class DetailScreen extends StatelessWidget {
             // ini cardnya di setting2
             child: Container(
               height: size.height * 0.7, // Sisa tinggi layar
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
+              decoration:  BoxDecoration(
+                color: themeProvider.isDarkTheme ? Colors.black : Colors.white,
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),

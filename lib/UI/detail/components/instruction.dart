@@ -1,6 +1,8 @@
 import 'package:finpronih/const.dart';
 import 'package:finpronih/models/recipes_model.dart';
+import 'package:finpronih/state-manegement/theme_provider';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Instruction extends StatelessWidget {
   const Instruction({super.key, required this.recipe});
@@ -8,6 +10,8 @@ class Instruction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+            final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
@@ -41,11 +45,15 @@ class Instruction extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: themeProvider.isDarkTheme
+                        ? const Color(0xFF303030)
+                        : Colors.white,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: themeProvider.isDarkTheme
+                        ? Colors.white.withOpacity(0.5)
+                        : Colors.black.withOpacity(0.1),
                         blurRadius: 5,
                         spreadRadius: 1,
                       ),
@@ -57,17 +65,24 @@ class Instruction extends StatelessWidget {
                       // Step Number
                       Text(
                         "Step ${index + 1}",
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: primaryColor,
+                          color: themeProvider.isDarkTheme
+                              ? const Color.fromARGB(255, 132, 215, 221)
+                              : primaryColor,
                         ),
                       ),
                       const Divider(color: Colors.grey, thickness: 1),
                       // Instruction Text
                       Text(
                         recipe.instructions[index], // Instruction sesuai index
-                        style: const TextStyle(fontSize: 16),
+                        style:  TextStyle(
+                          fontSize: 16,
+                          color: themeProvider.isDarkTheme
+                                  ? Colors.white
+                                  : Colors.black,
+                        ),
                       ),
                     ],
                   ),
